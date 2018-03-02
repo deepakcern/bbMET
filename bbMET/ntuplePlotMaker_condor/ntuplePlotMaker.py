@@ -24,6 +24,10 @@ print 'NEntries = '+str(NEntries)
 
 CSVMWP=0.8484
 
+h_genMET_DR     =TH2D('genMET_vs_DR','genMET_vs_DR',100,0.0,4.0,100,0.0,1000)
+h_genMET        =TH1F('genMET', 'genMET', 100,0,1000)
+
+
 h_total         =TH1F('h_total','h_total',2,0,2)
 h_met           =TH1F('h_met_',  'h_met_',  100,0.,1000.)
 h_njet          =TH1F('h_njet_',  'h_njet_',  20,0.,20.)
@@ -57,7 +61,7 @@ for ievent in range(NEntries):
     ntuple.GetEntry(ievent)
     pfMet                      = ntuple.__getattr__('pfMetCorrPt')
     pfMetPhi                   = ntuple.__getattr__('pfMetCorrPhi')
-    
+    genMET                     = ntuple.__getattr__('pfgenMET')
     nTHINJets                  = ntuple.__getattr__('THINnJet')
     thinjetP4                  = ntuple.__getattr__('THINjetP4')
     thinJetCSV                 = ntuple.__getattr__('THINjetCISVV2')
@@ -104,12 +108,15 @@ for ievent in range(NEntries):
 #Fill
 
     if nTHINJets>0: h_jet1_pT.Fill(j1.Pt(),mcWeight)
-    if nTHINJets>1: h_jet2_pT.Fill(j2.Pt(),mcWeight)
+    if nTHINJets>1:
+		  h_jet2_pT.Fill(j2.Pt(),mcWeight)
+		  h_genMET_DR.Fill(j1.DeltaR(j2),genMET,mcWeight)
     if nTHINJets>2: h_jet3_pT.Fill(j3.Pt(),mcWeight)
     
     h_met.Fill(pfMet,mcWeight)
     h_njet.Fill(nTHINJets,mcWeight)
     h_nbjet.Fill(nBjets,mcWeight)
+    h_genMET.Fill(genMET,mcWeight)
     
     try:
         if nTHINJets>0:
@@ -143,6 +150,8 @@ f.cd()
 h_total.SetBinContent(1,NEntries)
 h_total.Write()
 
+h_genMET.Write()
+h_genMET_DR.Write()
 h_met.Write()
 h_njet.Write()
 h_nbjet.Write()
