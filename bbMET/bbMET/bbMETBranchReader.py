@@ -710,6 +710,7 @@ def AnalyzeDataSet():
         deepCSVMWP=0.6324
         
         mybjets=[]
+        mybJetsP4=[]
         myJetCSV=[]
         myJetP4=[]
         myJetHadronFlavor=[]
@@ -736,6 +737,7 @@ def AnalyzeDataSet():
                     
                 if thinJetCSV[nb] > CSVMWP and abs(thinjetP4[nb].Eta())<2.4:
                     mybjets.append(nb)
+                    mybJetsP4.append(thindeepCSVjetP4[nb])
             
             myJetNPV=thinjetNPV
             nUncleanJets=nTHINJets
@@ -759,6 +761,7 @@ def AnalyzeDataSet():
                 
                 if thinJetdeepCSV[nb] > deepCSVMWP and abs(thindeepCSVjetP4[nb].Eta())<2.4:
                     mybjets.append(nb)
+                    mybJetsP4.append(thindeepCSVjetP4[nb])
                     
             myJetNPV=thindeepCSVjetNPV
             nUncleanJets=nTHINdeepCSVJets           
@@ -791,6 +794,19 @@ def AnalyzeDataSet():
 #        print [jet.Pt() for jet in sortedjets]
 #        print sortedindex
 #        print
+
+        if nBjets==2
+            allbjetPT=[jet.Pt() for jet in mybjetsP4]
+            bjetindex=[i for i in range(len(allbjetPT))]
+
+            sortedbjets=[jet for pt,jet in sorted(zip(allbjetPT,mybJetP4), reverse=True)]      # This gives a list of jets with their pTs in descending order
+            sortedbindex=[jetindex for pt,bjetindex in sorted(zip(allbjetPT,jetbindex), reverse=True)] # Indices of jets in myJetP4 in decscending order of jetPT
+   
+            bj1=sortedbjets[0]
+            bj2=sortedbjets[1]
+            ifirstjet=sortedindex[0]
+            isecondjet=sortedindex[1]
+
 
         ##
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1161,6 +1177,7 @@ def AnalyzeDataSet():
             #2e, 2 b-tagged
                 if nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_2e2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(ZeePhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_2e2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
                     
                 if nBjets==2 and SR2jet2 and SR2njetcond and ZdPhicond:
                     allquantities.reg_2e2b_Zmass = ZeeMass
@@ -1168,6 +1185,8 @@ def AnalyzeDataSet():
 
                     allquantities.reg_2e2b_hadrecoil = ZeeRecoil
                     allquantities.reg_2e2b_MET = pfMet
+                    
+                    allquantities.reg_2e2b_higgsinvmass=(bj1+bj2).M()
 
                     allquantities.reg_2e2b_lep1_pT=myEles[iLeadLep].Pt()
                     allquantities.reg_2e2b_lep2_pT=myEles[iSecondLep].Pt()
@@ -1268,6 +1287,8 @@ def AnalyzeDataSet():
             #2mu, 2 b-tagged
                 if  nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_2mu2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(ZmumuPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_2mu2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
+                    
                     
                 if  nBjets==2 and SR2jet2 and SR2njetcond and ZdPhicond:
                     allquantities.reg_2mu2b_Zmass = ZmumuMass
@@ -1275,6 +1296,8 @@ def AnalyzeDataSet():
 
                     allquantities.reg_2mu2b_hadrecoil = ZmumuRecoil
                     allquantities.reg_2mu2b_MET = pfMet
+                    
+                    allquantities.reg_2mu2b_higgsinvmass=(bj1+bj2).M()
 
                     allquantities.reg_2mu2b_lep1_pT=myMuos[iLeadLep].Pt()
                     allquantities.reg_2mu2b_lep2_pT=myMuos[iSecondLep].Pt()
@@ -1397,6 +1420,8 @@ def AnalyzeDataSet():
             #1e, 2 b-tagged
                 if nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_1e2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(WenuPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_1e2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
+                    
                     
                 if nBjets==2 and SR2jet2 and SR2njetcond and WdPhicond:
                     allquantities.reg_1e2b_Wmass = Wenumass
@@ -1404,6 +1429,8 @@ def AnalyzeDataSet():
 
                     allquantities.reg_1e2b_hadrecoil = WenuRecoil
                     allquantities.reg_1e2b_MET = pfMet
+                    
+                    allquantities.reg_1e2b_min_higgsinvmass=(bj1+bj2).M()
 
                     allquantities.reg_1e2b_lep1_pT=myEles[iLeadLep].Pt()
 
@@ -1495,6 +1522,8 @@ def AnalyzeDataSet():
             #1mu, 2 b-tagged
                 if  nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_1mu2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(WmunuPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_1mu2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
+                    
                     
                 if  nBjets==2 and SR2jet2 and SR2njetcond and WdPhicond:
                     allquantities.reg_1mu2b_Wmass = Wmunumass
@@ -1502,6 +1531,10 @@ def AnalyzeDataSet():
 
                     allquantities.reg_1mu2b_hadrecoil = WmunuRecoil
                     allquantities.reg_1mu2b_MET = pfMet
+                    
+                    allquantities.reg_1mu2b_higgsinvmass=(bj1+bj2).M()
+                    
+                    allquantities.reg_1mu2b_higgsinvmass=(bj1+bj2).M()
 
                     allquantities.reg_1mu2b_lep1_pT=myMuos[iLeadLep].Pt()
                     allquantities.reg_1mu2b_lep1_iso=myMuIso[iLeadLep]
@@ -1612,11 +1645,15 @@ def AnalyzeDataSet():
             #1mu, 1e, 2 b-tagged
                 if nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_1mu1e2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(TOPPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_1mu1e2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
+                    
                     
                 if nBjets==2 and SR2jet2 and SR2njetcond and TopdPhicond:
 
                     allquantities.reg_1mu1e2b_hadrecoil = TOPRecoil
                     allquantities.reg_1mu1e2b_MET = pfMet
+                    
+                    allquantities.reg_1mu1e2b_higgsinvmass=(bj1+bj2).M()
 
                     if EleLead:
                         allquantities.reg_1mu1e2b_lep1_pT=myEles[0].Pt()
@@ -1724,11 +1761,15 @@ def AnalyzeDataSet():
    #1 photon, 2 b-tagged
                 if nBjets==2 and SR2jet2 and SR2njetcond:
                     allquantities.reg_1gamma2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(GammaPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
+                    allquantities.reg_1gamma2b_min_dPhi_higgsinvmass=(bj1+bj2).M()
+                    
                     
                 if nBjets==2 and SR2jet2 and SR2njetcond and GammaPhicond:
 
                     allquantities.reg_1gamma2b_hadrecoil = GammaRecoil
                     allquantities.reg_1gamma2b_MET = pfMet
+                    
+                    allquantities.reg_1gamma2b_higgsinvmass=(bj1+bj2).M()
 
                     allquantities.reg_1gamma2b_pho1_pT=myPhos[0].Pt()
                     #allquantities.reg_1gamma2b_lep2_pT=myMuos[0].Pt()
