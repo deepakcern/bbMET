@@ -153,7 +153,7 @@ if not options.CSV and not options.DeepCSV:
     print "Please run using --csv or --deepcsv. Exiting."
     sys.exit()
 
-applydPhicut=True
+applydPhicut=False
 
 #print 'options = ',[options.inputfile]
 inputfilename = options.inputfile
@@ -1475,7 +1475,7 @@ def AnalyzeDataSet():
 
                     if Higgsmass >100. and Higgsmass < 150. :
 
-                        allquantities.reg_2mu2b_higgsinvmass=Higgsmass
+                        allquantities.reg_1e2b_higgsinvmass=Higgsmass
 
 
 

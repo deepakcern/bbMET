@@ -166,7 +166,7 @@ class MonoHbbQuantities:
 
            
             elif  'higgsinvmass' in quant:
-                bins='500'
+                bins='10'
                 low='100'
                 high='150'
 
