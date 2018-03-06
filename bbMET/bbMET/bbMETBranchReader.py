@@ -737,7 +737,7 @@ def AnalyzeDataSet():
                     
                 if thinJetCSV[nb] > CSVMWP and abs(thinjetP4[nb].Eta())<2.4:
                     mybjets.append(nb)
-                    mybJetsP4.append(thindeepCSVjetP4[nb])
+                    mybJetsP4.append(thinjetP4[nb])
             
             myJetNPV=thinjetNPV
             nUncleanJets=nTHINJets
