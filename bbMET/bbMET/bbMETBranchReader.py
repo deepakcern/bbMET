@@ -795,7 +795,7 @@ def AnalyzeDataSet():
 #        print sortedindex
 #        print
 
-        if nBjets==2
+        if nBjets==2:
             allbjetPT=[jet.Pt() for jet in mybjetsP4]
             bjetindex=[i for i in range(len(allbjetPT))]
 
