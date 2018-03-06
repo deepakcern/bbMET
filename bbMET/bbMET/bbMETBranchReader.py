@@ -796,11 +796,11 @@ def AnalyzeDataSet():
 #        print
 
         if nBjets==2:
-            allbjetPT=[jet.Pt() for jet in mybjetsP4]
+            allbjetPT=[jet.Pt() for jet in mybJetsP4]
             bjetindex=[i for i in range(len(allbjetPT))]
 
-            sortedbjets=[jet for pt,jet in sorted(zip(allbjetPT,mybJetP4), reverse=True)]      # This gives a list of jets with their pTs in descending order
-            sortedbindex=[jetindex for pt,bjetindex in sorted(zip(allbjetPT,jetbindex), reverse=True)] # Indices of jets in myJetP4 in decscending order of jetPT
+            sortedbjets=[jet for pt,jet in sorted(zip(allbjetPT,mybJetsP4), reverse=True)]      # This gives a list of jets with their pTs in descending order
+            sortedbindex=[jetindex for pt,bjetindex in sorted(zip(allbjetPT,bjetindex), reverse=True)] # Indices of jets in myJetP4 in decscending order of jetPT
    
             bj1=sortedbjets[0]
             bj2=sortedbjets[1]
