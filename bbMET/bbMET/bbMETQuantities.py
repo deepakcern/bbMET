@@ -28,6 +28,11 @@ class MonoHbbQuantities:
         for quant in Histos2D:
             exec("self."+quant+" = None")       #Convention: Will use this as a list of two numbers, first being x-value and second being y-value.
             exec("self.h_"+quant+" = []")
+
+        MyHistos2D=AllQuantList.newgetHistos2D()
+        for quant in MyHistos2D:
+            exec("self."+quant+" = None")       #Convention: Will use this as a list of two numbers, first being x-value and second being y-value.
+            exec("self.h_"+quant+" = []")      
             
         self.rootfilename = rootfilename
         #self.allquantities = allquantities
@@ -242,6 +247,14 @@ class MonoHbbQuantities:
         for quant in Histos2D:
             xbins,xlow,xhigh,ybins,ylow,yhigh=getBins2D(quant)
             exec("self.h_"+quant+".append(TH2F('h_"+quant+"_','h_"+quant+"_',"+xbins+","+xlow+","+xhigh+","+ybins+","+ylow+","+yhigh+"))")
+
+        MyHistos2D=AllQuantList.newgetHistos2D()
+        for quant in MyHistos2D:
+            xbins,xlow,xhigh,ybins,ylow,yhigh=getBins2D(quant)
+            exec("self.h_"+quant+".append(TH2F('h_"+quant+"_','h_"+quant+"_',"+xbins+","+xlow+","+xhigh+","+ybins+","+ylow+","+yhigh+"))")
+   
+
+        
         
         h_met_pdf_tmp = []
         for ipdf in range(2):
@@ -281,6 +294,10 @@ class MonoHbbQuantities:
         Histos2D=AllQuantList.getHistos2D()
         for quant in Histos2D:
             exec("if self."+quant+" is not None: self.h_"+quant+"[0] .Fill(self."+quant+"[0], self."+quant+"[1], WF)")
+
+        MyHistos2D=AllQuantList.newgetHistos2D()
+        for quant in MyHistos2D:
+            exec("if self."+quant+" is not None: self.h_"+quant+"[0] .Fill(self."+quant+"[0],self."+quant+"[1], WF)")
             
     def FillHisto(self):
         WF = self.weight
@@ -400,6 +417,7 @@ class MonoHbbQuantities:
         preselquantlist=AllQuantList.getPresel()
         regquants=AllQuantList.getRegionQuants()
         Histos2D=AllQuantList.getHistos2D()
+        MyHistos2D=AllQuantList.newgetHistos2D()
         
         
         for quant in allquantlist:
@@ -412,5 +430,8 @@ class MonoHbbQuantities:
             exec("self.h_"+quant+"[0].Write()")
             
         for quant in Histos2D:
+            exec("self.h_"+quant+"[0].Write()")
+
+        for quant in MyHistos2D:
             exec("self.h_"+quant+"[0].Write()")
             

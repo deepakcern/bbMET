@@ -58,7 +58,7 @@ def getRegionQuants():
     
     #Z CR
     regions=['2e1b','2mu1b','2e2b','2mu2b']
-    varlist=['Zmass','ZpT','hadrecoil','MET','higgsinvmass','DR_vs_pT(bbbar)','lep1_pT','lep2_pT','lep1_iso','lep2_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']#,'lep1_dR_tau','lep2_dR_tau','min_lep_dR_tau','ntaucleaned']
+    varlist=['Zmass','ZpT','hadrecoil','MET','higgsinvmass','lep1_pT','lep2_pT','lep1_iso','lep2_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']#,'lep1_dR_tau','lep2_dR_tau','min_lep_dR_tau','ntaucleaned']
     
     for reg in regions:
         for var in varlist:
@@ -66,7 +66,7 @@ def getRegionQuants():
             
     #W CR       
     regions=['1e1b','1mu1b','1e2b','1mu2b']
-    varlist=['Wmass','WpT','hadrecoil','MET','higgsinvmass','DR_vs_pT(bbbar)','lep1_pT','lep1_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dR_jet_ele_preclean','min_dR_jet_ele_postclean','njet_n_minus_1','unclean_njet_n_minus_1','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
+    varlist=['Wmass','WpT','hadrecoil','MET','higgsinvmass','lep1_pT','lep1_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dR_jet_ele_preclean','min_dR_jet_ele_postclean','njet_n_minus_1','unclean_njet_n_minus_1','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
     
     for reg in regions:
         for var in varlist:
@@ -74,7 +74,7 @@ def getRegionQuants():
     
     #Top CR       
     regions=['1mu1e1b','1mu1e2b']
-    varlist=['hadrecoil','MET','higgsinvmass','DR_vs_pT(bbbar)','lep1_pT','lep2_pT','lep1_iso','lep2_iso','e_pT','mu_pT','mu_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
+    varlist=['hadrecoil','MET','higgsinvmass','lep1_pT','lep2_pT','lep1_iso','lep2_iso','e_pT','mu_pT','mu_iso','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
     
     for reg in regions:
         for var in varlist:
@@ -82,7 +82,7 @@ def getRegionQuants():
     
     #Gamma CR       
     regions=['1gamma1b','1gamma2b']
-    varlist=['hadrecoil','MET','higgsinvmass','DR_vs_pT(bbbar)','pho_pT','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','npho','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
+    varlist=['hadrecoil','MET','higgsinvmass','pho_pT','jet1_pT','jet2_pT','jet1_eta','jet2_eta','jet1_csv','jet2_csv','jet1_deepcsv','jet2_deepcsv','njet','ntau','npho','nele','nmu','nUncleanEle','nUncleanMu','nUncleanTau','min_dPhi_jet_Recoil','min_dPhi_jet_MET','min_dPhi_jet_Recoil_n_minus_1']
     
     for reg in regions:
         for var in varlist:
@@ -92,4 +92,29 @@ def getRegionQuants():
     
 def getHistos2D():
     return ['ZpT_Recoil_MET0','DR_Vs_pT(bbbar)','ZpT_Recoil_MET50','ZpT_Recoil_MET100','ZpT_Recoil_MET150','ZpT_Recoil_MET200','ZpT_MET','MET_Recoil']    
+
+    
+    return regquants 
+
+def newgetHistos2D():
+     
+    varquant=[]
+    
+    regions=['2e2b','2mu2b','1e2b','1mu2b','1mu1e2b','1gamma2b']
+    varlist=['DR_Vs_pT(bbbar)']
+
+    for var in varlist:
+          for reg in regions:
+             varquant.append("reg_"+reg+"_"+var)
+    return varquant
+                 
+
+
+
+
+
+
+
+
+    
     

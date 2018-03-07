@@ -1046,6 +1046,10 @@ def AnalyzeDataSet():
         for quant in Histos2D:
             exec("allquantities."+quant+" = None")
 
+        MyHistos2D=AllQuantList.newgetHistos2D()
+        for quant in MyHistos2D:
+            exec("allquantities."+quant+" = None")
+
 
 
         ####new conds
@@ -1221,6 +1225,8 @@ def AnalyzeDataSet():
                 
 
                     allquantities.reg_2e2b_higgsinvmass=Higgsmass
+                    #allquantities.reg_2e2b_bbbarpt=bbbarpt
+                    #allquantities.reg_2e2b_DR_bbbar=DR_bbbar
                     allquantities.reg_2e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 
@@ -1342,6 +1348,8 @@ def AnalyzeDataSet():
 
 
                     allquantities.reg_2mu2b_higgsinvmass=Higgsmass
+                    #allquantities.reg_2mu2b_bbbarpt=bbbarpt
+                    #allquantities.reg_2mu2b_DR_bbbar=DR_bbbar
                     allquantities.reg_2mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 # -------------------------------------------
@@ -1478,6 +1486,9 @@ def AnalyzeDataSet():
 
 
                     allquantities.reg_1e2b_higgsinvmass=Higgsmass
+                    #allquantities.reg_1e2b_bbbarpt=bbbarpt
+                    #allquantities.reg_1e2b_DR_bbbar=DR_bbbar
+
                     allquantities.reg_1e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 
@@ -1582,6 +1593,8 @@ def AnalyzeDataSet():
 
 
                     allquantities.reg_1mu2b_higgsinvmass=Higgsmass
+                    #allquantities.reg_1mu2b_bbbarpt=bbbarpt
+                    #allquantities.reg_1mu2b_DR_bbbar=DR_bbbar
                     allquantities.reg_1mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 # -------------------------------------------
