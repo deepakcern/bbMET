@@ -805,6 +805,8 @@ def AnalyzeDataSet():
             bj1=sortedbjets[0]
             bj2=sortedbjets[1]
             Higgsmass=(bj1+bj2).M()
+            DR_bbbar=bj1.DeltaR(bj2)
+            higgspt=(bj1+bj2).Pt()
             ifirstbjet=sortedbindex[0]
             isecondbjet=sortedbindex[1]
 
@@ -1218,9 +1220,10 @@ def AnalyzeDataSet():
                     allquantities.reg_2e2b_nUncleanMu = nUncleanMu
                 
 
-                    if Higgsmass >100. and Higgsmass < 150. :
+                    allquantities.reg_2e2b_higgsinvmass=Higgsmass
+                    allquantities.reg_2e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
-                        allquantities.reg_2e2b_higgsinvmass=Higgsmass
+
                     
                     
         #2mu, 1 b-tagged
@@ -1337,9 +1340,9 @@ def AnalyzeDataSet():
                     allquantities.reg_2mu2b_nUncleanEle = nUncleanEle
                     allquantities.reg_2mu2b_nUncleanMu = nUncleanMu
 
-                    if Higgsmass >100. and Higgsmass < 150. :
 
-                        allquantities.reg_2mu2b_higgsinvmass=Higgsmass
+                    allquantities.reg_2mu2b_higgsinvmass=Higgsmass
+                    allquantities.reg_2mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 # -------------------------------------------
 # W CR
@@ -1473,9 +1476,10 @@ def AnalyzeDataSet():
                     allquantities.reg_1e2b_nUncleanEle = nUncleanEle
                     allquantities.reg_1e2b_nUncleanMu = nUncleanMu
 
-                    if Higgsmass >100. and Higgsmass < 150. :
 
-                        allquantities.reg_1e2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1e2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+
 
 
 
@@ -1576,9 +1580,9 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu2b_nUncleanEle = nUncleanEle
                     allquantities.reg_1mu2b_nUncleanMu = nUncleanMu
 
-                    if Higgsmass >100. and Higgsmass < 150. :
 
-                        allquantities.reg_1mu2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1mu2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 # -------------------------------------------
 # Top CR
@@ -1709,9 +1713,8 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu1e2b_nUncleanEle = nUncleanEle
                     allquantities.reg_1mu1e2b_nUncleanMu = nUncleanMu
 
-                    if Higgsmass >100. and Higgsmass < 150. :
-
-                        allquantities.reg_1mu1e2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1mu1e2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1mu1e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 # -------------------------------------------
 # Gamma CR
 # -------------------------------------------
@@ -1820,9 +1823,10 @@ def AnalyzeDataSet():
                     allquantities.reg_1gamma2b_nUncleanEle = nUncleanEle
                     allquantities.reg_1gamma2b_nUncleanMu = nUncleanMu
 
-                    if Higgsmass >100. and Higgsmass < 150. :
 
-                        allquantities.reg_1gamma2b_higgsinvmass=Higgsmass
+
+                    allquantities.reg_1gamma2b_higgsinvmass=Higgsmass
+                    allquantities.reg_1gamma2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
 
 
 
