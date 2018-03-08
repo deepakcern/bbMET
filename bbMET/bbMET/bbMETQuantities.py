@@ -171,9 +171,9 @@ class MonoHbbQuantities:
 
            
             elif  'higgsinvmass' in quant:
-                bins='10'
-                low='100'
-                high='150'
+                bins='25'
+                low='0.0'
+                high='250.'
 
             elif '_dR_' in quant:
                 bins='60'
@@ -231,7 +231,7 @@ class MonoHbbQuantities:
             higgshigh='250.'
             drbin='10'
             drlow='0.'
-            drhigh='5'
+            drhigh='5.'
             
             if 'ZpT_Recoil' in quant:
                 return ZpTbins,ZpTlow,ZpThigh,Rbins,Rlow,Rhigh
