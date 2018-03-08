@@ -2826,7 +2826,7 @@ def GenWeightProducer(sample,nGenPar, genParId, genMomParId, genParSt,genParP4):
             status = genParSt[ig]
             if ( abs(PID) == 6) :
                 goodLepID.append(ig)
-        if(len(goodLepID)==2):https://github.com/deepakcern/bbMET.git
+        if(len(goodLepID)==2):
             l4_thisLep = genParP4[goodLepID[0]]
             l4_thatLep = genParP4[goodLepID[1]]
             pt1 = TMath.Min(400.0, l4_thisLep.Pt())
