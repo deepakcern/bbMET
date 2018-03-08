@@ -1227,7 +1227,8 @@ def AnalyzeDataSet():
                     allquantities.reg_2e2b_higgsinvmass=Higgsmass
                     #allquantities.reg_2e2b_bbbarpt=bbbarpt
                     #allquantities.reg_2e2b_DR_bbbar=DR_bbbar
-                    allquantities.reg_2e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_2e2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
+
 
 
                     
@@ -1350,7 +1351,7 @@ def AnalyzeDataSet():
                     allquantities.reg_2mu2b_higgsinvmass=Higgsmass
                     #allquantities.reg_2mu2b_bbbarpt=bbbarpt
                     #allquantities.reg_2mu2b_DR_bbbar=DR_bbbar
-                    allquantities.reg_2mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_2mu2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
 
 # -------------------------------------------
 # W CR
@@ -1489,7 +1490,7 @@ def AnalyzeDataSet():
                     #allquantities.reg_1e2b_bbbarpt=bbbarpt
                     #allquantities.reg_1e2b_DR_bbbar=DR_bbbar
 
-                    allquantities.reg_1e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_1e2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
 
 
 
@@ -1595,7 +1596,7 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu2b_higgsinvmass=Higgsmass
                     #allquantities.reg_1mu2b_bbbarpt=bbbarpt
                     #allquantities.reg_1mu2b_DR_bbbar=DR_bbbar
-                    allquantities.reg_1mu2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_1mu2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
 
 # -------------------------------------------
 # Top CR
@@ -1727,7 +1728,7 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu1e2b_nUncleanMu = nUncleanMu
 
                     allquantities.reg_1mu1e2b_higgsinvmass=Higgsmass
-                    allquantities.reg_1mu1e2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_1mu1e2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
 # -------------------------------------------
 # Gamma CR
 # -------------------------------------------
@@ -1839,7 +1840,7 @@ def AnalyzeDataSet():
 
 
                     allquantities.reg_1gamma2b_higgsinvmass=Higgsmass
-                    allquantities.reg_1gamma2b_DR_Vs_pT(bbbar)=[higgspt,DR_bbbar]
+                    allquantities.reg_1gamma2b_DR_Vs_pTbbbar=[higgspt,DR_bbbar]
 
 
 

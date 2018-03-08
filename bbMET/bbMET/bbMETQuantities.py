@@ -240,8 +240,8 @@ class MonoHbbQuantities:
             elif 'MET_Recoil' in quant:
                 return Mbins,Mlow,Mhigh,Rbins,Rlow,Rhigh
 
-            elif 'DR_Vs_pT(bbbar)' in quant:
-                return higgsptbin,higgslow,higgshigh,drlow,drhigh
+            elif 'DR_Vs_pTbbbar' in quant:
+                return higgsptbin,higgslow,higgshigh,drbin,drlow,drhigh
         
         Histos2D=AllQuantList.getHistos2D()
         for quant in Histos2D:

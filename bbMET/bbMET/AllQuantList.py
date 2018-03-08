@@ -91,7 +91,7 @@ def getRegionQuants():
     return regquants   
     
 def getHistos2D():
-    return ['ZpT_Recoil_MET0','DR_Vs_pT(bbbar)','ZpT_Recoil_MET50','ZpT_Recoil_MET100','ZpT_Recoil_MET150','ZpT_Recoil_MET200','ZpT_MET','MET_Recoil']    
+    return ['ZpT_Recoil_MET0','DR_Vs_pTbbbar','ZpT_Recoil_MET50','ZpT_Recoil_MET100','ZpT_Recoil_MET150','ZpT_Recoil_MET200','ZpT_MET','MET_Recoil']    
 
     
     return regquants 
@@ -101,7 +101,7 @@ def newgetHistos2D():
     varquant=[]
     
     regions=['2e2b','2mu2b','1e2b','1mu2b','1mu1e2b','1gamma2b']
-    varlist=['DR_Vs_pT(bbbar)']
+    varlist=['DR_Vs_pTbbbar']
 
     for var in varlist:
           for reg in regions:
