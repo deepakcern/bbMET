@@ -170,7 +170,7 @@ class MonoHbbQuantities:
                 high='1000.'
 
            
-            elif  'higgsinvmass' in quant:
+            elif  'bb_Mass' in quant:
                 bins='25'
                 low='0.0'
                 high='250.'
@@ -226,12 +226,16 @@ class MonoHbbQuantities:
             Mlow='0.'
             Mhigh='500.'
 
-            higgsptbin='25'
+            higgsptbin='100'
             higgslow='0.'
-            higgshigh='250.'
+            higgshigh='1000.'
             drbin='10'
             drlow='0.'
             drhigh='5.'
+            MASSbin='25'
+            MASSlow='0'
+            MASShigh='250'
+            
             
             if 'ZpT_Recoil' in quant:
                 return ZpTbins,ZpTlow,ZpThigh,Rbins,Rlow,Rhigh
@@ -240,8 +244,13 @@ class MonoHbbQuantities:
             elif 'MET_Recoil' in quant:
                 return Mbins,Mlow,Mhigh,Rbins,Rlow,Rhigh
 
-            elif 'DR_Vs_pTbbbar' in quant:
+            elif 'DR_Vs_bb_pT' in quant:
                 return higgsptbin,higgslow,higgshigh,drbin,drlow,drhigh
+
+            elif 'DR_Vs_bb_Mass' in quant:
+                return MASSbin,MASSlow,MASShigh,drbin,drlow,drhigh
+
+
         
         Histos2D=AllQuantList.getHistos2D()
         for quant in Histos2D:
