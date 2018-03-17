@@ -810,10 +810,7 @@ def AnalyzeDataSet():
         if nJets>2: ithirdjet=sortedindex[2]
 
         min_dPhi_jet_MET = min(   [  DeltaPhi(jt.Phi(),pfMetPhi) for jt in myJetP4]   )
-#        print alljetPT
-#        print [jet.Pt() for jet in sortedjets]
-#        print sortedindex
-#        print
+
 
         if nBjets==2:
             allbjetPT=[jet.Pt() for jet in mybJetsP4]
@@ -831,6 +828,13 @@ def AnalyzeDataSet():
             isecondbjet=sortedbindex[1]
 
 
+
+
+
+#        print alljetPT
+#        print [jet.Pt() for jet in sortedjets]
+#        print sortedindex
+#        print
 
         ##
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1164,10 +1168,6 @@ def AnalyzeDataSet():
         for quant in Histos2D:
             exec("allquantities."+quant+" = None")
 
-        MyHistos2D=AllQuantList.newgetHistos2D()
-        for quant in MyHistos2D:
-            exec("allquantities."+quant+" = None")
-
 
 
         ####new conds
@@ -1307,7 +1307,6 @@ def AnalyzeDataSet():
                     allquantities.reg_2e2b_bb_Mass=Higgsmass
                     allquantities.reg_2e2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
                     allquantities.reg_2e2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
                     if Higgsmass > 100. and Higgsmass < 150.:
 
                         allquantities.reg_2e2b_Zmass = ZeeMass
@@ -1420,7 +1419,6 @@ def AnalyzeDataSet():
                     allquantities.reg_2mu2b_bb_Mass=Higgsmass
                     allquantities.reg_2mu2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
                     allquantities.reg_2mu2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
                     if Higgsmass > 100. and Higgsmass < 150.:
 
                         allquantities.reg_2mu2b_Zmass = ZmumuMass
@@ -1659,7 +1657,6 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu2b_bb_Mass=Higgsmass
                     allquantities.reg_1mu2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
                     allquantities.reg_1mu2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
                     if Higgsmass > 100. and Higgsmass < 150.:
 
                         allquantities.reg_1mu2b_Wmass = Wmunumass
@@ -1779,11 +1776,9 @@ def AnalyzeDataSet():
                     allquantities.reg_1mu1e2b_min_dPhi_jet_Recoil_n_minus_1 = min( [DeltaPhi(TOPPhi,myJetP4[nb].Phi()) for nb in range(nJets)] )
 
                 if nBjets==2 and SR2jet2 and SR2njetcond and TopdPhicond:
-
                     allquantities.reg_1mu1e2b_bb_Mass=Higgsmass
                     allquantities.reg_1mu1e2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
                     allquantities.reg_1mu1e2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
                     if Higgsmass > 100. and Higgsmass < 150.:
 
                         allquantities.reg_1mu1e2b_hadrecoil = TOPRecoil
@@ -1900,7 +1895,6 @@ def AnalyzeDataSet():
                     allquantities.reg_1gamma2b_bb_Mass=Higgsmass
                     allquantities.reg_1gamma2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
                     allquantities.reg_1gamma2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
                     if Higgsmass > 100. and Higgsmass < 150.:
 
 
@@ -1998,7 +1992,6 @@ def AnalyzeDataSet():
             allquantities.reg_QCD2b_bb_Mass=Higgsmass
             allquantities.reg_QCD2b_DR_Vs_bb_pT=[higgspt,DR_bbbar]
             allquantities.reg_QCD2b_DR_Vs_bb_Mass=[Higgsmass,DR_bbbar]
-
             if Higgsmass > 100. and Higgsmass < 150.:
 
 
@@ -2014,7 +2007,7 @@ def AnalyzeDataSet():
                 if options.DeepCSV:
                     allquantities.reg_QCD2b_jet1_deepcsv    =   myJetCSV[ifirstjet]
                     allquantities.reg_QCD2b_jet2_deepcsv    = myJetCSV[isecondjet]
-
+                    
                 allquantities.reg_QCD2b_njet    =   nJets
                 allquantities.reg_QCD2b_ntau    =   nTau
                 allquantities.reg_QCD2b_nele    =   nEle
