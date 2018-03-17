@@ -708,7 +708,7 @@ def AnalyzeDataSet():
 
         CSVMWP=0.8484
         deepCSVMWP=0.6324
-
+        mybJetsP4=[]
         mybjets=[]
         myJetCSV=[]
         myJetP4=[]
