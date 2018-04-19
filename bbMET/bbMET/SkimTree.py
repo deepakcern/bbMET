@@ -602,12 +602,6 @@ def AnalyzeDataSet():
                 AK8jetspassindex.append(iak8jet)
 
 
-        st_AK8nthikJets[0]=len(AK8jetspassindex)
-        for iak8jet in AK8jetspassindex:
-            st_AK8thikjetP4.push_back(AK8thikjetP4[iak8jet])
-            st_AK8thikjetNhadEF.push_back(AK8thikjetNhadEF[iak8jet])
-            st_AK8thikjetChadEF.push_back(AK8thikjetChadEF[iak8jet])
-            st_AK8SDmass.push_back(AK8SDmass[iak8jet])
 
 
 #  CA15jets collections
@@ -622,12 +616,7 @@ def AnalyzeDataSet():
             if (j1.Pt() > 200.0)&(abs(j1.Eta())<2.5) and ca15looseid: #  &(bool(passThinJetLooseID[jthinjet])==True):
                 CA15jetspassindex.append(ica15jet)
 
-        st_CA15njets[0]=len(CA15jetspassindex)
-        for ica15 in CA15jetspassindex:
-            st_CA15jetP4.push_back(ica15)
-            st_CA15SDmass.push_back(ica15)
-            st_CA15jetNhadEF.push_back(ica15)
-            st_CA15jetChadEF.push_back(ica15)
+
 
 
 
@@ -777,6 +766,20 @@ def AnalyzeDataSet():
                 st_AK4deepCSVjetCHadEF.push_back(thindeepCSVjetChadEF[ithinjet])
         except:
             pass
+
+        st_CA15njets[0]=len(CA15jetspassindex)
+        for ica15 in CA15jetspassindex:
+            st_CA15jetP4.push_back(CA15jetP4[ica15])
+            st_CA15SDmass.push_back(CA15SDmass[ica15])
+            st_CA15jetNhadEF.push_back(CA15jetNhadEF[ica15])
+            st_CA15jetChadEF.push_back(CA15jetChadEF[ica15])
+
+        st_AK8nthikJets[0]=len(AK8jetspassindex)
+        for iak8jet in AK8jetspassindex:
+            st_AK8thikjetP4.push_back(AK8thikjetP4[iak8jet])
+            st_AK8thikjetNhadEF.push_back(AK8thikjetNhadEF[iak8jet])
+            st_AK8thikjetChadEF.push_back(AK8thikjetChadEF[iak8jet])
+            st_AK8SDmass.push_back(AK8SDmass[iak8jet])
 
 
 
