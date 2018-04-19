@@ -156,7 +156,7 @@ def AnalyzeDataSet():
     st_AK8thikjetNhadEF           = ROOT.std.vector('float')()
     st_AK8thikjetChadEF           = ROOT.std.vector('float')()
     st_AK8SDmass                  = ROOT.std.vector('float')()
-    st_AK8PuppisubjetCSV          = ROOT.std.vector('float')()
+    st_AK8PuppisubjetCSV          = ROOT.std.vector(ROOT.std.vector('float'))()
 
 
 #CA15Jets
@@ -165,7 +165,7 @@ def AnalyzeDataSet():
     st_CA15jetNhadEF            = ROOT.std.vector('float')()
     st_CA15jetChadEF            = ROOT.std.vector('float')()
     st_CA15SDmass               = ROOT.std.vector('float')()
-    st_CA15PuppisubjetCSV       = ROOT.std.vector('float')()
+    st_CA15PuppisubjetCSV       = ROOT.std.vector(ROOT.std.vector('float'))()
 
 
     st_nEle                = array( 'L', [ 0 ] ) #ROOT.std.vector('int')()
@@ -350,7 +350,7 @@ def AnalyzeDataSet():
         NEntries=int(sys.argv[2])
         print "WARNING: Running in TEST MODE"
 
-    for ievent in range(NEntries):
+    for ievent in range(5000):#(NEntries):
 
 #    print "\n*****\nWARNING: *Test run* Processing 200 events only.\n*****\n"
 #    for ievent in range(200):
@@ -401,7 +401,7 @@ def AnalyzeDataSet():
             AK8thikJetLooseID          = skimmedTree.__getattr__('AK8PuppijetPassIDLoose')
             AK8thikjetTightID          = skimmedTree.__getattr__('AK8PuppijetPassIDTight')
             AK8SDmass                  = skimmedTree.__getattr__('AK8PuppijetSDmass')
-            AK8PuppisubjetCSV          = skimmedTree.__getattr__('AK8PuppijetSDCSV')
+            AK8PuppisubjetCSV          = skimmedTree.__getattr__('AK8PuppisubjetSDCSV')
 
             #AK8subjet
             #nAK8subjets               = skimmedTree.__getattr__('AK8PuppinSubSDJet')
@@ -651,7 +651,7 @@ def AnalyzeDataSet():
             if thinJetdeepCSV[jthinjet] > DCSVMWP and abs(j1.Eta())<2.4 : ndBjets += 1
 
 
-        if len(thinjetpassindex) < 1 and len(thindCSVjetpassindex) < 1 and CA15jetspassindex < 1  and AK8jetspassindex < 1 : continue
+        if len(thinjetpassindex) < 1 and len(thindCSVjetpassindex) < 1 and len(AK8jetspassindex) < 1 and len(CA15jetspassindex) < 1 : continue #CA15jetspassindex
 
 #        except:
 #            if len(thinjetpassindex) < 1: continue
@@ -770,6 +770,7 @@ def AnalyzeDataSet():
                 st_AK4deepCSVjetHadronFlavor.push_back(THINdeepCSVjetHadronFlavor[ithinjet])
                 st_AK4deepCSVjetNHadEF.push_back(thindeepCSVjetNhadEF[ithinjet])
                 st_AK4deepCSVjetCHadEF.push_back(thindeepCSVjetChadEF[ithinjet])
+               
         except:
             pass
 
@@ -780,13 +781,14 @@ def AnalyzeDataSet():
             st_CA15jetNhadEF.push_back(CA15jetNhadEF[ica15])
             st_CA15jetChadEF.push_back(CA15jetChadEF[ica15])
             st_CA15PuppisubjetCSV.push_back(CA15PuppisubjetCSV[ica15])
-
+            
         st_AK8nthikJets[0]=len(AK8jetspassindex)
         for iak8jet in AK8jetspassindex:
             st_AK8thikjetP4.push_back(AK8thikjetP4[iak8jet])
             st_AK8thikjetNhadEF.push_back(AK8thikjetNhadEF[iak8jet])
             st_AK8thikjetChadEF.push_back(AK8thikjetChadEF[iak8jet])
             st_AK8SDmass.push_back(AK8SDmass[iak8jet])
+            st_AK8PuppisubjetCSV.push_back(AK8PuppisubjetCSV[iak8jet])
 
 
 
