@@ -155,18 +155,17 @@ def AnalyzeDataSet():
     st_AK8thikjetP4               = ROOT.std.vector('TLorentzVector')()
     st_AK8thikjetNhadEF           = ROOT.std.vector('float')()
     st_AK8thikjetChadEF           = ROOT.std.vector('float')()
-    #st_AK8THIKjetNPV
-    #st_AK8thikJetLooseID
-    #st_AK8thikjetTightID
-    st_AK8SDmass                 = ROOT.std.vector('float')()
+    st_AK8SDmass                  = ROOT.std.vector('float')()
+    st_AK8PuppisubjetCSV          = ROOT.std.vector('float')()
 
 
 #CA15Jets
     st_CA15njets                =array( 'L', [ 0 ] ) #ROOT.std.vector('int')()
     st_CA15jetP4                = ROOT.std.vector('TLorentzVector')()
-    st_CA15SDmass               = ROOT.std.vector('float')()
     st_CA15jetNhadEF            = ROOT.std.vector('float')()
     st_CA15jetChadEF            = ROOT.std.vector('float')()
+    st_CA15SDmass               = ROOT.std.vector('float')()
+    st_CA15PuppisubjetCSV       = ROOT.std.vector('float')()
 
 
     st_nEle                = array( 'L', [ 0 ] ) #ROOT.std.vector('int')()
@@ -268,17 +267,20 @@ def AnalyzeDataSet():
     outTree.Branch( 'st_AK8thikjetP4',st_AK8thikjetP4)
     outTree.Branch( 'st_AK8thikjetNhadEF',st_AK8thikjetNhadEF)
     outTree.Branch( 'st_AK8thikjetChadEF',st_AK8thikjetChadEF)
+    outTree.Branch( 'st_AK8SDmass',st_AK8SDmass)
+    outTree.Branch( 'st_AK8PuppisubjetCSV',st_AK8PuppisubjetCSV)
     #outTree.Branch( 'st_AK8THIKjetNPV',st_AK8THIKjetNPV)
     #outTree.Branch( 'st_AK8thikJetLooseID',st_AK8thikJetLooseID)
     #outTree.Branch( 'st_AK8thikjetTightID',st_AK8thikjetTightID)
-    outTree.Branch( 'st_AK8SDmass',st_AK8SDmass)
+
 
 #CA15jets
     outTree.Branch( 'st_CA15njets',st_CA15njets,'st_CA15njets/L')
     outTree.Branch( 'st_CA15jetP4',st_CA15jetP4)
-    outTree.Branch( 'st_CA15SDmass',st_CA15SDmass)
     outTree.Branch( 'st_CA15jetNhadEF',st_CA15jetNhadEF)
     outTree.Branch( 'st_CA15jetChadEF',st_CA15jetChadEF)
+    outTree.Branch( 'st_CA15SDmass',st_CA15SDmass)
+    outTree.Branch( 'st_CA15PuppisubjetCSV',st_CA15PuppisubjetCSV)
     #outTree.Branch( 'st_CA15PassIDLoose',st_CA15PassIDLoose)
     #outTree.Branch( 'st_CA15PassIDTight',st_CA15PassIDTight)
 
@@ -399,6 +401,7 @@ def AnalyzeDataSet():
             AK8thikJetLooseID          = skimmedTree.__getattr__('AK8PuppijetPassIDLoose')
             AK8thikjetTightID          = skimmedTree.__getattr__('AK8PuppijetPassIDTight')
             AK8SDmass                  = skimmedTree.__getattr__('AK8PuppijetSDmass')
+            AK8PuppisubjetCSV          = skimmedTree.__getattr__('AK8PuppijetSDCSV')
 
             #AK8subjet
             #nAK8subjets               = skimmedTree.__getattr__('AK8PuppinSubSDJet')
@@ -416,6 +419,7 @@ def AnalyzeDataSet():
             CA15jetChadEF             = skimmedTree.__getattr__('CA15PuppijetCHadEF')
             CA15PassIDLoose           = skimmedTree.__getattr__('CA15PuppijetPassIDLoose')
             CA15PassIDTight           = skimmedTree.__getattr__('CA15PuppijetPassIDTight')
+            CA15PuppisubjetCSV        = skimmedTree.__getattr__('CA15PuppisubjetSDCSV')
 
 
 
@@ -723,17 +727,19 @@ def AnalyzeDataSet():
         st_AK4deepCSVjetNHadEF.clear()
         st_AK4deepCSVjetCHadEF.clear()
 
-        st_CA15njets.clear()
+
         st_CA15jetP4.clear()
         st_CA15SDmass.clear()
         st_CA15jetNhadEF.clear()
         st_CA15jetChadEF.clear()
+        st_CA15PuppisubjetCSV.clear()
 
-        st_AK8nthikJets.clear()
+
         st_AK8thikjetP4.clear()
         st_AK8thikjetNhadEF.clear()
         st_AK8thikjetChadEF.clear()
         st_AK8SDmass.clear()
+        st_AK8PuppisubjetCSV.clear()
 
         st_eleP4.clear()
         st_muP4.clear()
@@ -773,6 +779,7 @@ def AnalyzeDataSet():
             st_CA15SDmass.push_back(CA15SDmass[ica15])
             st_CA15jetNhadEF.push_back(CA15jetNhadEF[ica15])
             st_CA15jetChadEF.push_back(CA15jetChadEF[ica15])
+            st_CA15PuppisubjetCSV.push_back(CA15PuppisubjetCSV[ica15])
 
         st_AK8nthikJets[0]=len(AK8jetspassindex)
         for iak8jet in AK8jetspassindex:
