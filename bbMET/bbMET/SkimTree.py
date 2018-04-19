@@ -647,7 +647,7 @@ def AnalyzeDataSet():
             if thinJetdeepCSV[jthinjet] > DCSVMWP and abs(j1.Eta())<2.4 : ndBjets += 1
 
 
-        if len(thinjetpassindex) < 1 and len(thindCSVjetpassindex) < 1 : continue
+        if len(thinjetpassindex) < 1 and len(thindCSVjetpassindex) < 1 and CA15jetspassindex < 1  and AK8jetspassindex < 1 : continue
 
 #        except:
 #            if len(thinjetpassindex) < 1: continue
