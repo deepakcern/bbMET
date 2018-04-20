@@ -467,6 +467,18 @@ def AnalyzeDataSet():
             thindeepCSVjetChadEF       = skimmedTree.__getattr__('st_AK4deepCSVjetCHadEF')
             thindeepCSVjetNPV          = skimmedTree.__getattr__('st_AK4deepCSVjetNPV')
 
+            #AK8Jets BRANCHES
+            AK8nthikJets               = skimmedTree.__getattr__('st_AK8nthikJets')
+            AK8thikjetP4               = skimmedTree.__getattr__('st_AK8thikjetP4')
+            AK8SDmass                  = skimmedTree.__getattr__('st_AK8SDmass')
+            AK8PuppisubjetCSV          = skimmedTree.__getattr__('st_AK8PuppisubjetCSV')
+
+            #CA15jets
+            CA15njets                 = skimmedTree.__getattr__('st_CA15njets')
+            CA15jetP4                 = skimmedTree.__getattr__('st_CA15jetP4')
+            CA15SDmass                = skimmedTree.__getattr__('st_CA15SDmass')
+            CA15PuppisubjetCSV        = skimmedTree.__getattr__('st_CA15PuppisubjetCSV')
+
             nPho                       = skimmedTree.__getattr__('st_nPho')
             phoP4                      = skimmedTree.__getattr__('st_phoP4')
             phoIsPassLoose             = skimmedTree.__getattr__('st_phoIsPassLoose')
@@ -790,6 +802,32 @@ def AnalyzeDataSet():
         nBjets=len(mybjets)
         nJets=len(myJetCSV)
  #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        #AK8Jets collections
+        MyAK8Jets=[]
+        AK8JetsP4=[]
+        nak8jets=AK8nthikJets[0]
+        for ak8 in range(nak8jets):
+            AK8JetsP4.append(AK8thikjetP4[ak8])
+        #Shorted AK8jet
+        allak8jetpT=[jet.Pt() for jet in AK8JetsP4]
+        sortedAK8Jets=[jet for pt,jet in sorted(zip(allak8jetpT,AK8JetsP4), reverse=True)]
+        AK8Jet=sortedAK8Jets[0]
+        if AK8Jet.Pt() > 200 and abs(AK8Jet.Eta()) < 2.4: AK8collection=True
+
+
+
+        CA15JetsP4=[]
+        nCA25Jets=CA15njets[0]
+        for ca15 in range(nCA25Jets):
+            CA15JetsP4.append(CA15jetP4[ca15])
+
+        #shorted CA15jet
+        allCA15jetpT=[jet.Pt() for jet in allak8jetpT]
+        sortedCA15Jets=[jet for pt,jet in sorted(zip(allCA15jetpT,CA15JetsP4), reverse=True)]
+        CA15jet=sortedCA15Jets[0]
+        if CA15jet.Pt() > 200 and abs(CA15jet.Eta()) < 2.4: CA15collection=True
+
+
  #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         ## Sort jets
 
@@ -828,7 +866,11 @@ def AnalyzeDataSet():
             isecondbjet=sortedbindex[1]
 
 
+#################---------------------------------------------------------------------------
 
+
+
+#########-------------------------------------
 
 
 #        print alljetPT
@@ -993,6 +1035,10 @@ def AnalyzeDataSet():
                 #writeSR1=True
 
 
+
+
+
+
      ## for SR2
         # 3 jets and 2 btagged
 
@@ -1036,7 +1082,8 @@ def AnalyzeDataSet():
         SR2_Cut8_nLep           =   nEle+nMu+nTau == 0
         SR2_Cut9_pfMET          =   pfmetstatus
 
-        if SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
+        #if CA15collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
+        if AK8collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
 
             allquantities.jet1_pT_sr2     = j1.Pt()
             allquantities.jet1_eta_sr2    = j1.Eta()
@@ -2007,7 +2054,7 @@ def AnalyzeDataSet():
                 if options.DeepCSV:
                     allquantities.reg_QCD2b_jet1_deepcsv    =   myJetCSV[ifirstjet]
                     allquantities.reg_QCD2b_jet2_deepcsv    = myJetCSV[isecondjet]
-                    
+
                 allquantities.reg_QCD2b_njet    =   nJets
                 allquantities.reg_QCD2b_ntau    =   nTau
                 allquantities.reg_QCD2b_nele    =   nEle
