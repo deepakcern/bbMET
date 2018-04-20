@@ -808,8 +808,8 @@ def AnalyzeDataSet():
 
         for ak8p4 in AK8thikjetP4:
             if ak8p4.Pt() > 200 and abs(ak8p4.Eta()) < 2.4:
-            myAK8JetsP4.append(ak8p4)
-            hasAK8jet=True
+                myAK8JetsP4.append(ak8p4)
+                hasAK8jet=True
         mynak8=len(myAK8JetsP4)
 
         #Shorted AK8jet
@@ -822,8 +822,9 @@ def AnalyzeDataSet():
         hasCA15jet=False
         myCA15JetsP4=[]
         for ca15P4 in CA15jetP4:
-            myCA15JetsP4.append(ca15P4)
-            hasCA15jet=True
+             if ca15P4.Pt() > 200 and abs(ca15P4.Eta()) < 2.4:
+                 myCA15JetsP4.append(ca15P4)
+                 hasCA15jet=True
         mynCA15=len(myCA15JetsP4)
 
         #shorted CA15jet

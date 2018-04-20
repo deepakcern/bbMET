@@ -73,8 +73,6 @@ class MonoHbbQuantities:
         self.h_met_pdf         = []
         self.h_met_muR         = []
         self.h_met_muF         = []
-        self.h_nak8jet         = []
-        self.h_nca15jet   =[]
 
         ## 2d histograms
         self.h_met_vs_mass     = []
@@ -117,8 +115,6 @@ class MonoHbbQuantities:
         self.h_N_Pho.append(TH1F('h_N_Pho_','h_N_Pho_',5,0,5))
         self.h_N_b.append(TH1F('h_N_b_','h_N_b_',10,0,10))
         self.h_N_j.append(TH1F('h_N_j_','h_N_j_',10,0,10))
-        self.h_nak8jet.append(TH1F('h_nak8jet_','h_nak8jet_',5,0,5))
-        self.h_nca15jet.append(TH1F('h_nca15jet','h_nca15jet',5,0,5))
 
         allquantlist=AllQuantList.getAll()
         preselquantlist=AllQuantList.getPresel()
@@ -354,8 +350,7 @@ class MonoHbbQuantities:
         self.h_N_Pho[0]          .Fill(self.N_Pho,     WF)
         self.h_N_b[0]            .Fill(self.N_b,       WF)
         self.h_N_j[0]            .Fill(self.N_j,       WF)
-        self.h_nak8jet[0]        .Fill(self.h_nak8jet, WF )
-        self.h_nca15jet[0]       .Fill(self.h_nca15jet, WF)
+
 #        print len(self.h_jet1_pT_sr1)
 #        print "HbbQuants: "+str(self.jet1_pT_sr2)
 
@@ -438,8 +433,6 @@ class MonoHbbQuantities:
         self.h_N_Pho[0].Write()
         self.h_N_b[0].Write()
         self.h_N_j[0].Write()
-        self.h_nak8jet[0].Write()
-        self.h_nca15jet[0].Write()
         #self.h_mass.Write()
 
         allquantlist=AllQuantList.getAll()
