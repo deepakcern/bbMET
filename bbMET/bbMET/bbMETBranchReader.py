@@ -803,29 +803,34 @@ def AnalyzeDataSet():
         nJets=len(myJetCSV)
  #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         #AK8Jets collections
-        MyAK8Jets=[]
-        AK8JetsP4=[]
-        nak8jets=AK8nthikJets[0]
-        for ak8 in range(nak8jets):
-            AK8JetsP4.append(AK8thikjetP4[ak8])
+        hasAK8jet=False
+        myAK8JetsP4=[]
+
+        for ak8p4 in AK8thikjetP4:
+            if ak8p4.Pt() > 200 and abs(ak8p4.Eta()) < 2.4:
+            myAK8JetsP4.append(ak8p4)
+            hasAK8jet=True
+        mynak8=len(myAK8JetsP4)
+
         #Shorted AK8jet
-        allak8jetpT=[jet.Pt() for jet in AK8JetsP4]
-        sortedAK8Jets=[jet for pt,jet in sorted(zip(allak8jetpT,AK8JetsP4), reverse=True)]
-        AK8Jet=sortedAK8Jets[0]
-        if AK8Jet.Pt() > 200 and abs(AK8Jet.Eta()) < 2.4: AK8collection=True
+            #allak8jetpT=[jet.Pt() for jet in AK8JetsP4]
+            #sortedAK8Jets=[jet for pt,jet in sorted(zip(allak8jetpT,AK8JetsP4), reverse=True)]
+            #AK8Jet=sortedAK8Jets[0]
 
 
-
-        CA15JetsP4=[]
-        nCA25Jets=CA15njets[0]
-        for ca15 in range(nCA25Jets):
-            CA15JetsP4.append(CA15jetP4[ca15])
+        #CA15Jets
+        hasCA15jet=False
+        myCA15JetsP4=[]
+        for ca15P4 in CA15jetP4:
+            myCA15JetsP4.append(ca15P4)
+            hasCA15jet=True
+        mynCA15=len(myCA15JetsP4)
 
         #shorted CA15jet
-        allCA15jetpT=[jet.Pt() for jet in allak8jetpT]
-        sortedCA15Jets=[jet for pt,jet in sorted(zip(allCA15jetpT,CA15JetsP4), reverse=True)]
-        CA15jet=sortedCA15Jets[0]
-        if CA15jet.Pt() > 200 and abs(CA15jet.Eta()) < 2.4: CA15collection=True
+        #allCA15jetpT=[jet.Pt() for jet in allak8jetpT]
+        #sortedCA15Jets=[jet for pt,jet in sorted(zip(allCA15jetpT,CA15JetsP4), reverse=True)]
+        #CA15jet=sortedCA15Jets[0]
+        #if CA15jet.Pt() > 200 and abs(CA15jet.Eta()) < 2.4: CA15collection=True
 
 
  #----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1083,7 +1088,7 @@ def AnalyzeDataSet():
         SR2_Cut9_pfMET          =   pfmetstatus
 
         #if CA15collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
-        if AK8collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
+        if SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
 
             allquantities.jet1_pT_sr2     = j1.Pt()
             allquantities.jet1_eta_sr2    = j1.Eta()
@@ -1115,6 +1120,13 @@ def AnalyzeDataSet():
             allquantities.met_sr2         = pfMet
             allquantities.jet1_nhf_sr2    = myJetNhadEF[ifirstjet]
             allquantities.jet1_chf_sr2    = myJetChadEF[ifirstjet]
+
+            if hasAK8jet:
+                allquantities.nak8jet_sr2  =nak8
+
+            if hasCA15jet:
+                allquantities.nca15jet_sr2 = mynCA15
+
 
 
 
