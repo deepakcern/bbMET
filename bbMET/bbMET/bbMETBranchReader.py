@@ -1123,7 +1123,7 @@ def AnalyzeDataSet():
             allquantities.jet1_chf_sr2    = myJetChadEF[ifirstjet]
 
             if hasAK8jet:
-                allquantities.nak8jet_sr2  =nak8
+                allquantities.nak8jet_sr2  =mynak8
 
             if hasCA15jet:
                 allquantities.nca15jet_sr2 = mynCA15
