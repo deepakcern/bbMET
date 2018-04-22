@@ -925,6 +925,11 @@ def AnalyzeDataSet():
         else:
             SRlepcond=False
 
+        if mynak8==0:
+            SRak8cond=True
+        else:
+            SRak8cond=False
+
         ## for SR1
          # 1 or 2 jets and 1 btagged
 
@@ -1048,7 +1053,7 @@ def AnalyzeDataSet():
      ## for SR2
         # 3 jets and 2 btagged
 
-        if (nJets == 2 or nJets == 3) and pfmetstatus and SRlepcond and SRtrigstatus:
+        if (nJets == 2 or nJets == 3) and pfmetstatus and SRlepcond and SRtrigstatus and SRak8cond:
             #===CSVs before any selection===
             preselquantlist=AllQuantList.getPresel()
             for quant in preselquantlist:
@@ -1089,44 +1094,45 @@ def AnalyzeDataSet():
         SR2_Cut9_pfMET          =   pfmetstatus
 
         #if CA15collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
-        if SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
-
-            allquantities.jet1_pT_sr2     = j1.Pt()
-            allquantities.jet1_eta_sr2    = j1.Eta()
-            allquantities.jet1_phi_sr2    = j1.Phi()
-            if options.CSV:
-               allquantities.jet1_csv_sr2       = myJetCSV[ifirstjet]
-            if options.DeepCSV:
-               allquantities.jet1_deepcsv_sr2   = myJetCSV[ifirstjet]
-
-
-            allquantities.jet2_pT_sr2     = j2.Pt()
-            allquantities.jet2_eta_sr2    = j2.Eta()
-            allquantities.jet2_phi_sr2    = j2.Phi()
-            if options.CSV:
-                allquantities.jet2_csv_sr2      = myJetCSV[isecondjet]
-            if options.DeepCSV:
-                allquantities.jet2_deepcsv_sr2  = myJetCSV[isecondjet]
-
-            if nJets>2:
-                allquantities.jet3_pT_sr2     = j3.Pt()
-                allquantities.jet3_eta_sr2    = j3.Eta()
-                allquantities.jet3_phi_sr2    = j3.Phi()
+        if SRak8cond and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
+            allquantities.bb_Mass_sr2=Higgsmass
+            if Higgsmass > 100. and Higgsmass < 150.:
+                allquantities.jet1_pT_sr2     = j1.Pt()
+                allquantities.jet1_eta_sr2    = j1.Eta()
+                allquantities.jet1_phi_sr2    = j1.Phi()
                 if options.CSV:
-                    allquantities.jet3_csv_sr2       = myJetCSV[ithirdjet]
+                   allquantities.jet1_csv_sr2       = myJetCSV[ifirstjet]
                 if options.DeepCSV:
-                    allquantities.jet3_deepcsv_sr2   = myJetCSV[ithirdjet]
+                   allquantities.jet1_deepcsv_sr2   = myJetCSV[ifirstjet]
 
-            allquantities.min_dPhi_sr2    = min_dPhi_jet_MET
-            allquantities.met_sr2         = pfMet
-            allquantities.jet1_nhf_sr2    = myJetNhadEF[ifirstjet]
-            allquantities.jet1_chf_sr2    = myJetChadEF[ifirstjet]
 
-            #if hasAK8jet:
-            allquantities.nak8jet_sr2  =mynak8
+                allquantities.jet2_pT_sr2     = j2.Pt()
+                allquantities.jet2_eta_sr2    = j2.Eta()
+                allquantities.jet2_phi_sr2    = j2.Phi()
+                if options.CSV:
+                    allquantities.jet2_csv_sr2      = myJetCSV[isecondjet]
+                if options.DeepCSV:
+                    allquantities.jet2_deepcsv_sr2  = myJetCSV[isecondjet]
 
-            #if hasCA15jet:
-            allquantities.nca15jet_sr2 = mynCA15
+                if nJets>2:
+                    allquantities.jet3_pT_sr2     = j3.Pt()
+                    allquantities.jet3_eta_sr2    = j3.Eta()
+                    allquantities.jet3_phi_sr2    = j3.Phi()
+                    if options.CSV:
+                        allquantities.jet3_csv_sr2       = myJetCSV[ithirdjet]
+                    if options.DeepCSV:
+                        allquantities.jet3_deepcsv_sr2   = myJetCSV[ithirdjet]
+
+                allquantities.min_dPhi_sr2    = min_dPhi_jet_MET
+                allquantities.met_sr2         = pfMet
+                allquantities.jet1_nhf_sr2    = myJetNhadEF[ifirstjet]
+                allquantities.jet1_chf_sr2    = myJetChadEF[ifirstjet]
+
+                #if hasAK8jet:
+                #allquantities.nak8jet_sr2  =mynak8
+
+                #if hasCA15jet:
+                #allquantities.nca15jet_sr2 = mynCA15
 
 
 
