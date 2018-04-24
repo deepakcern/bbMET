@@ -817,14 +817,16 @@ def AnalyzeDataSet():
         #mynak8=len(myAK8JetsP4)
 
 
-        for ak8jet in AK8nthikJets:
+        for ak8jet in range(AK8nthikJets):
             if AK8thikjetP4[ak8jet].Pt() > 200. and abs(AK8thikjetP4[ak8jet].Eta()) < 2.4:
                 if AK8SDmass[ak8jet] > 100. and AK8SDmass[ak8jet] < 150.:
-                    myAK8JetsP4.append(AK8thikjetP4[ak8jet])
+                    #myAK8JetsP4.append(AK8thikjetP4[ak8jet])
                     for i in range(len(AK8PuppisubjetCSV[ak8jet])):
                         if (AK8PuppisubjetCSV[ak8jet])[i] > 0.5426:
                             AK8csv.append(i)
-                    if len(AK8csv) >=2: hastwobjets = True
+                    if len(AK8csv) >=2:
+                        hastwobjets = True
+                        myAK8JetsP4.append(AK8thikjetP4[ak8jet])
         mynak8=len(myAK8JetsP4)
 
 
@@ -1113,7 +1115,7 @@ def AnalyzeDataSet():
         SR2_Cut9_pfMET          =   pfmetstatus
 
         #if CA15collection and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
-        if hastwobjets and SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
+        if SR2_Cut1_nJets and SR2_Cut2_nBjets and SR2_Cut3_trigstatus and SR2_Cut4_jet1 and SR2_Cut5_jet2 and SR2_Cut6_jet3 and SR2_Cut7_dPhi_jet_MET and SR2_Cut8_nLep and SR2_Cut9_pfMET and keepevent:
             allquantities.bb_Mass_sr2=Higgsmass
             if Higgsmass > 100. and Higgsmass < 150.:
                 allquantities.jet1_pT_sr2     = j1.Pt()
