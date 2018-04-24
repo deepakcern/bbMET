@@ -821,10 +821,10 @@ def AnalyzeDataSet():
             if AK8thikjetP4[ak8jet].Pt() > 200. and abs(AK8thikjetP4[ak8jet].Eta()) < 2.4:
                 if AK8SDmass[ak8jet] > 100. and AK8SDmass[ak8jet] < 150.:
                     myAK8JetsP4.append(AK8thikjetP4[ak8jet])
-                    for i in range(AK8PuppisubjetCSV[ak8jet])
+                    for i in range(len(AK8PuppisubjetCSV[ak8jet])):
                         if (AK8PuppisubjetCSV[ak8jet])[i] > 0.5426:
                             AK8csv.append(i)
-                        if len(AK8csv) >=2: hastwobjets = True
+                    if len(AK8csv) >=2: hastwobjets = True
         mynak8=len(myAK8JetsP4)
 
 
