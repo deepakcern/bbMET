@@ -820,7 +820,6 @@ def AnalyzeDataSet():
         for ak8jet in range(AK8nthikJets):
             if AK8thikjetP4[ak8jet].Pt() > 200. and abs(AK8thikjetP4[ak8jet].Eta()) < 2.4:
                 if AK8SDmass[ak8jet] > 100. and AK8SDmass[ak8jet] < 150.:
-                    #myAK8JetsP4.append(AK8thikjetP4[ak8jet])
                     for i in range(len(AK8PuppisubjetCSV[ak8jet])):
                         if (AK8PuppisubjetCSV[ak8jet])[i] > 0.5426:
                             AK8csv.append(i)
@@ -828,6 +827,22 @@ def AnalyzeDataSet():
                         hastwobjets = True
                         myAK8JetsP4.append(AK8thikjetP4[ak8jet])
         mynak8=len(myAK8JetsP4)
+
+        CA15cvs=[]
+        myca15jetsP4=[]
+        hasca15twobjets=False
+
+
+        for ca15jet in range(CA15njets):
+            if CA15jetP4[ca15jet].Pt() > 200. and abs(CA15jetP4[ca15jet].Eta()) < 2.4:
+                if CA15SDmass[ca15jet] > 100. and CA15SDmass[ca15jet] < 150.:
+                    for i in range(len(CA15PuppisubjetCSV[ca15jet])):
+                        if (CA15PuppisubjetCSV[ca15jet])[i] > 0.5426:
+                            CA15cvs.append(i)
+                    if len(CA15cvs) >=2:
+                        hasca15twobjets = True
+                        myca15jetsP4.append(CA15jetP4[ca15jet])
+        mynCA15=len(myca15jetsP4)
 
 
 
@@ -840,13 +855,13 @@ def AnalyzeDataSet():
 
 
         #CA15Jets
-        hasCA15jet=False
-        myCA15JetsP4=[]
-        for ca15P4 in CA15jetP4:
-             if ca15P4.Pt() > 200 and abs(ca15P4.Eta()) < 2.4:
-                 myCA15JetsP4.append(ca15P4)
-                 hasCA15jet=True
-        mynCA15=len(myCA15JetsP4)
+        #hasCA15jet=False
+        #myCA15JetsP4=[]
+        #for ca15P4 in CA15jetP4:
+             #if ca15P4.Pt() > 200 and abs(ca15P4.Eta()) < 2.4:
+                # myCA15JetsP4.append(ca15P4)
+                 #hasCA15jet=True
+        #mynCA15=len(myCA15JetsP4)
 
         #shorted CA15jet
         #allCA15jetpT=[jet.Pt() for jet in allak8jetpT]
@@ -1153,7 +1168,7 @@ def AnalyzeDataSet():
                 allquantities.nak8jet_sr2  =mynak8
 
                 #if hasCA15jet:
-                #allquantities.nca15jet_sr2 = mynCA15
+                allquantities.nca15jet_sr2 = mynCA15
 
 
 
