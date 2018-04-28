@@ -25,7 +25,7 @@ cmsname.SetNDC(1)
 cmsname.SetTextFont(61)
 
 c=TCanvas()
-files = glob.glob(path)
+files = sorted(glob.glob(path))
 print "files",files
 for file in files:
     f=TFile.Open(file,'read')
